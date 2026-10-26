@@ -5,13 +5,7 @@ import jogo.Tabuleiro;
 
 public interface Jogador
 {
-    // Verificar se deve ter atributo 
-
-    // Métodos 
-    public Marca getMarca ()
-    {
-        // retorna a marca do jogador
-    }
-
-
+    // Metodos presentes em JogadorAutomatico e JogadorHumano 
+    public Marca getMarca();
+    public void facaSuaJogada() throws Exception;
 }

@@ -14,18 +14,22 @@ public class JogadorAutomatico implements Jogador
         // fazer o jogador escolher sua marca
         // via sorteio de numeros aleatorio
         if ((int)(Math.random()*2) == 0)
-            marca=new marca('X');
+            marca=new Marca('X');
         else
-            marca=new marca('O');
+            marca=new Marca('O');
     }
 
     public JogadorAutomatico (Tabuleiro tab, Marca mrc) throws Exception
     {
         // atribuir tab para tabDoJogo
+        tabDoJogo = tab;
         // e mrc para marca
+        marca = mrc;
     }
 
-    // Tirei o get Marca
+    public Marca getMarca(){
+        return this.marca;
+    }
 
     public void facaSuaJogada ()
     {
@@ -48,101 +52,388 @@ public class JogadorAutomatico implements Jogador
                  this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
             else
             // tentando ganhar na linha 1
-                if (!this.tabDoJogo.haMarcaNaPosicao(1,0) &&
-                    this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
-                    this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
-                    this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
-                else
-                if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+            if (!this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
                 !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
                  this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
                  this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
-                else
-                if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
                  this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
                 !this.tabDoJogo.haMarcaNaPosicao(1,2))
                  this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
-                else
+            else
             // tentando ganhar na linha 2
-                    if (!this.tabDoJogo.haMarcaNaPosicao(2,0) &&
-                    this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
-                    this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
-                    this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
-                    else
-                    if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
-                    !this.tabDoJogo.haMarcaNaPosicao(2,1) &&
-                    this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
-                    this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
-                    else
-                    if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
-                    this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
-                    !this.tabDoJogo.haMarcaNaPosicao(2,2))
-                    this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
+            if (!this.tabDoJogo.haMarcaNaPosicao(2,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
+                else
+            if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando ganhar na coluna 0
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
             else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
+             else
             // tentando ganhar na coluna 1
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,1) && this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,1) && this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
             else
             // tentando ganhar na coluna 2
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando ganhar na diagonal principal
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando ganhar na diagonal secundaria
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
             else
             // tentando atrapalhar vitoria na linha 0
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,1) && !this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,1) && !this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
             else
             // tentando atrapalhar vitoria na linha 1
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && !this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && !this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && !this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && !this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
             else
             // tentando atrapalhar vitoria na linha 2
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(2,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && !this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && !this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando atrapalhar vitoria na coluna 0
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,0) && !this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,0) && !this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
             else
             // tentando atrapalhar vitoria na coluna 1
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && !this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,1) && !this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && !this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,1) && !this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
             else
             // tentando atrapalhar vitoria na coluna 2
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && !this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && !this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando atrapalhar vitoria na diagonal principal
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,2) && !this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && !this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando atrapalhar vitoria na diagonal secundaria
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                this.tabDoJogo.haMarcaNaPosicao(2,0) && !this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && !this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                this.tabDoJogo.haMarcaNaPosicao(1,1) && !this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na linha 0
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(0,1) && this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(0,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na linha 1
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na linha 2
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(2,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(2,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na coluna 0
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,0);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,0) && this.tabDoJogo.getMarcaNaPosicao(1,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na coluna 1
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,1) && this.tabDoJogo.getMarcaNaPosicao(2,1).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,1);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,1) && this.tabDoJogo.getMarcaNaPosicao(0,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,1))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,1);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na coluna 2
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,2) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,2);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,2) && this.tabDoJogo.getMarcaNaPosicao(1,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                 this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na diagonal principal
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,2) && this.tabDoJogo.getMarcaNaPosicao(2,2).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,0);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,0) && this.tabDoJogo.getMarcaNaPosicao(0,0).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,0) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,2))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,2);
             else
             // tentando jogada de futuro (há 1 marca do jogador e mais nada; vamos lá e plantamos outra marca) na diagonal secundaria
-            if ... else if ... else if ...
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                 this.tabDoJogo.haMarcaNaPosicao(2,0) && this.tabDoJogo.getMarcaNaPosicao(2,0).equals(this.marca))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 0,2);
+            else
+            if ( this.tabDoJogo.haMarcaNaPosicao(0,2) && this.tabDoJogo.getMarcaNaPosicao(0,2).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(1,1) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 1,1);
+            else
+            if (!this.tabDoJogo.haMarcaNaPosicao(0,2) &&
+                 this.tabDoJogo.haMarcaNaPosicao(1,1) && this.tabDoJogo.getMarcaNaPosicao(1,1).equals(this.marca) &&
+                !this.tabDoJogo.haMarcaNaPosicao(2,0))
+                this.tabDoJogo.setMarcaNaPosicao(this.marca, 2,0);
             else
             // termine jogando num lugar qualquer que esteja livre
+            // Percorre as linhas e colunas atrás de uma posição vazia
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (!this.tabDoJogo.haMarcaNaPosicao(i, j))
+                        {
+                            this.tabDoJogo.setMarcaNaPosicao(this.marca, i, j);
+                            return;
+                        }
+                    }
+                }
+            }
         }
         catch (Exception erro)
         {} // ignorando pois sei que n o estou usando posicao invalida nem comparando com equals um null
